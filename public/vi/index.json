@@ -1,0 +1,64 @@
+[
+{
+	"uri": "/vi/",
+	"title": "Triển khai Ứng dụng ShareNote với Auto Scaling Group",
+	"tags": [],
+	"description": "",
+	"content": "Triển khai Ứng dụng ShareNote với Auto Scaling Group Tổng quan Ở bài thực hành này, chúng ta sẽ tiến hành việc triển khai ứng dụng với Auto Scaling Group nhằm đảm bảo khả năng co giãn của ứng dụng đó theo nhu cầu của người truy cập. Thêm vào đó, chúng ta cũng sẽ triển khai Load Balancer nhằm cân bằng tải và điều phối các yêu cầu truy cập từ phía người dùng đến Application Tier của chúng ta.\nHãy chắc chắn rằng bạn đã xem qua tài liệu Triển khai Ứng dụng ShareNote trên Máy ảo Windows/AmazonLinux và nắm được cách triển khai ứng dụng trên máy ảo. Chúng ta sẽ cần sử dụng máy ảo được triển khai ShareNote cho việc triển khai đồng loạt và mở rộng trong Auto Scaling Group.\nAuto Scaling Group Auto Scaling Group (nhóm co giãn tự động) là một nhóm các EC2 Instance. Nhóm này có thể co giãn số lượng của các EC2 Instance thành viên theo chính sách co giãn (scaling policy) mà bạn đặt ra.\nLaunch Template Launch Template (khuôn mẫu khởi tạo) là một tính năng giúp bạn tạo khuôn mẫu cho việc khởi tạo các EC2 Instance. Nhờ thế, bạn có thể quy trình hóa và đơn giản hóa công tác khởi tạo các EC2 Instance cho dịch vụ Auto Scaling (co giãn tự động).\nLoad Balancer Load Balancer (máy cân bằng tải) là một công cụ có thể phân phối lưu lượng dữ liệu được trao đổi tới các tài nguyên AWS (cụ thể trong bài lab này là các EC2 Instances) trong Target Group.\nTarget Group Target Group (nhóm mục tiêu) là một nhóm những thành phần tài nguyên AWS sẽ nhận lưu lượng dữ liệu được phân phối và truyền tải bởi Load Balancer.\nNội dung: Các bước chuẩn bị Khởi tạo Launch Template Khởi tạo Target Group Khởi tạo Load Balancer Khởi tạo Auto Scaling Group Kiểm tra kết quả "
+},
+{
+	"uri": "/vi/1-vpc/",
+	"title": "Khởi tạo VPC",
+	"tags": [],
+	"description": "",
+	"content": "Ở phần này, bạn sẽ tạo các VPC với dải IP tương ứng trong sơ đồ\nTạo VPC Để tạo VPC, chúng ta thực hiện như sau:\nTruy cập vào VPC. Ở thanh điều hướng bên trái, chọn VPC. Ở trang khởi đầu, chọn Create VPC. Ở trang Create VPC, thiết lập VPC Public với các thông số như sau: VPC and more Nhập tên VPC Nhập dải IP theo sơ đồ Chọn số lượng AZ, ở bài này mình chọn 1 Chọn số lượng public subnet 1, private subnet 0 Chọn Create VPC Ở trang Create VPC, thiết lập VPC Private với các thông số như sau: VPC and more Nhập tên VPC Nhập dải IP theo sơ đồ Chọn số lượng AZ, ở bài này mình chọn 1 Chọn số lượng public subnet 0, private subnet 1 Chọn Create VPC Thực hiện tương tự với 2 VPC còn lại Vào mục Subnet. Chọn subnet vừa tạo trong quá trình tạo VPC Chọn Actions -\u0026gt; Edit subnet settings -\u0026gt; Chọn Enable auto-assign public IPv4 -\u0026gt; Save Thực hiện với các subnet còn lại "
+},
+{
+	"uri": "/vi/2-ec2/",
+	"title": "Khởi tạo EC2",
+	"tags": [],
+	"description": "",
+	"content": "Ở phần này, bạn sẽ tạo EC2 cho các VPC.\nTạo EC2 Để tạo EC2 nhanh chóng ta thực hiện các bước sau\nTruy cập EC2 Chọn Instance -\u0026gt; Create Instance Chọn AIM, ở đây mình chọn Amazon Linux 2AMI Chọn t2.micro Chọn key pair, nếu chưa có key pair chọn create key pair là chọn theo hình dưới Ở mục Network settings chọn edit Chọn VPC, Subnet tương ứng với EC2 muốn cài. Chọn Create security groups, Nhập tên SG, mô tả, tạo thêm 1 SG rules và cấu hình như sau với EC2 đặt ở public: Launch Instance để tạo EC2 Với EC2 đặt ở private ta cấu hình Sg như sau Thục hiện tương tự với 2 EC2 private còn lại. Kiểm tra kết nôi của public Mình sử dụng MobaX.. nên các bước sẽ như sau Chọn SSH -\u0026gt; nhập Remote host (là Public IPv4 của EC2) -\u0026gt; Specify username \u0026ldquo;ec2-user\u0026rdquo; -\u0026gt; Port 22 -\u0026gt; Advanced SSH settings -\u0026gt; use private kye và chọn file key được tải về sau khi tạo keypair Khi thự hiện kết nối EC2 thành công, ta nhập đoạn sau để kiểm tra ping amazon.com -c5. Trả về kết quả như ảnh là EC2 đã kết nối với internet thành công "
+},
+{
+	"uri": "/vi/3-transit-gateway/",
+	"title": "Khởi tạo Load Balancer",
+	"tags": [],
+	"description": "",
+	"content": "Ở bước này, chúng ta sẽ triển khai Load Balancer điều phối các request từ người dùng đến các EC2 instance chạy ứng dụng ShareNote của chúng ta.\nTạo Load Balancer Truy cập vào EC2 Management Console. Ở thanh điều hướng bên trái, kéo xuống dưới và click Load Balancers. Ở trang danh sách Load Balancer, click Create Load Balancer. Ở trang Select load balancer type, chọn Create ở mục Application Load Balancer. Ở trang Create Application Load Balancer, thiết lập các thông số như sau: Basic Configuration: Name: Nhập tên của Load Balancer (VD: sharenote-lb) Scheme: internet-facing IP address type: ipv4 Kéo màn hình xuống dưới, tại mục Network mapping. Tại mục VPC chọn VPC default. Tại mục Mappings Chọn hai AZ ap-southeast-1a và ap-southeast-1b Kéo màn hình xuống dưới, tại mục Security Groups, click chọn sharenote-sg. Tại mục Listeners and routing , phần Default action click chọn sharenote-tg target group mà chúng ta đã tạo ở bước trước đó. Kéo màn hình xuống dưới cùng, click Create load balancer. Trang tạo Load Balancer thành công sẽ hiển thị ra cho bạn. Click View load balancers để trở về danh sách Load Balancer Quá trình tạo Load Balancer sẽ mất khoảng 5-10 phút để hoàn thành. Bạn có thể kiểm tra sự thay đổi trạng thái từ provisioning sang active ở danh sách Load Balancer.\nHãy ghi chú lại DNS name của Load Balancer lại vì đây sẽ là địa chỉ chúng ta dùng để truy cập vào ứng dụng dược triển khai. Truy cập địa chỉ DNS trên browser của bạn, đảm bảo có thể truy cập tới ứng dụng Share Note. Tuy nhiên lúc này chúng ta chỉ có 1 máy chủ EC2 duy nhất. Tiếp theo chúng ta sẽ tiến hành cấu hình tính năng Auto Scaling Group, giúp tự động tăng số lượng EC2 instance của chúng ta khi lượng truy cập tăng cao.\n"
+},
+{
+	"uri": "/vi/4-transit-gateway-attachment/",
+	"title": "Khởi tạo Auto Scaling Group",
+	"tags": [],
+	"description": "",
+	"content": "Ở phần này, chúng ta sẽ triển khai một Auto Scaling Group cho ứng dụng ShareNote để đảm bảo ứng dụng của chúng ta sẽ được triển khai với tính sẵn sàng cao, và có khả năng tăng số lượng EC2 instance khi người dùng truy cập vào hệ thống tăng.\nTạo AutoScaling Group Truy cập vào EC2 Management Console. Ở thanh điều hướng bên trái, chọn Auto Scaling Groups. Ở trang Auto Scaling Groups, chọn Create an Auto Scaling group. Bắt đầu với trang Choose launch template or configuration, thiết lập các thông tin như sau: Name: Nhập vào tên của Auto Scaling Group (VD: sharenote-asg) Launch template: Chọn launch template chúng ta đã tạo trước đó (VD: sharenote-template) Kéo màn hình xuống dưới và click Next. Ở trang Configure settings: Mục Network, phần Subnets Lựa chọn 2 subnet ở hai AZ ap-northeast-1a và ap-northeast-1b. Kéo màn hình xuống dưới và click Next. Ở trang Configure advanced options: Mục Load balancing - optional click chọn Attach to an existing load balancer. Click chọn Choose from your load balancer target groups. Click chọn target group mà chúng ta đã tạo trước đó. (VD: sharenote-tg) Kéo màn hình xuống dưới và click Next. Ở trang Configure group size and scaling policies: Group size - optional: Desired capacity: Nhập 1. (Default) Minimum capacity: Nhập 1. (Default) Maximum capacity: Nhập 3. Tại mục Scaling policies - optional: Lựa chọn trong bài thực hành này nhằm tạo điều kiện dễ dàng hơn cho bước kiểm tra được thực hiện tiếp theo. Bạn hoàn toàn có thể thiết lập chính sách scale tài nguyên theo nhu cầu của bạn. Chọn Target tracking scaling policy. Metric type: Chọn Application Load Balancer request count per target. Target group: Chọn target group mà chúng ta đã tạo (VD: sharenote-tg). Target value: Nhập 30. Click Next. Ở trang Add notifications, chọn Next. Ở trang Add tags, chọn Next. Ở trang Review, chọn Create Auto Scaling Group Quá trình khởi tạo Auto Scaling Group sẽ được thực hiện, Auto Scaling Group vừa được tạo sẽ hiển thị trong danh sách, và bạn có thể chọn vào nó để xem thông tin chi tiết.\nVhúng ta có thể theo dõi các EC2 instance hiện có trong Auto Scaling Group ở trang Instance management. Các instance có tình trạng InService là các instance đã sẵn sàng hoạt động.\nĐến đây, chúng ta đã hoàn thành việc triển khai ứng dụng Share Note với Auto Scaling Group và Elastic Load Balancer. Với mô hình này, bạn có thể triển khai ứng dụng của mình với tính sẵn sàng cao, dễ dàng mở rộng và cân bằng tải các yêu cầu từ người dùng.\nỞ bước kế tiếp, chúng ta sẽ thử nghiệm tính năng thêm EC2 Instance dựa trên việc tăng số lượng truy cập đến ứng dụng của chúng ta.\nTrước khi thực hiện bước kế tiếp hãy kiểm tra cấu hình Automatic scaling của Auto Scaling Group của chúng ta có giống như dưới đây không. Nếu quá trình tạo scaling policy bị lỗi, chúng ta có thể click Create dynamic scaling policy để tiến hành tạo lại scaling policy mới.\n"
+},
+{
+	"uri": "/vi/5-transit-gateway-route-table/",
+	"title": "Kiểm tra Kết quả",
+	"tags": [],
+	"description": "",
+	"content": "Trong bài thực hành này, chúng ta sẽ kiếm tra truy cập tới ShareNote và tiến hành tăng số lượng yêu cầu truy cập đến ứng dụng thông qua việc mở đồng loạt nhiều kết nối sử dụng công cụ Webserver Stress Tool 8. Bạn hãy nhấn vào link này để tải về.\nBạn cũng có thể tải về trực tiếp tại link dưới:\nWebserver Stress Tool 8\rwebstress.zip\r(6098 KB)\rKiểm tra khả năng tự mở rộng của ứng dụng ShareNote được triển khai Giải nén file zip và cài đặt Webserver Stress Tool 8 với tùy chọn mặc định. Khởi dộng Webserver Stress Tool 8 để tiến hành tạo số lượng truy cập lớn đến Endpoint của Load Balancer. Nhấn vào tab Test Type và nhập thông số như hình dưới đây: Run Unit : 100000 Number of Users : 101 Click Delay : 1 Nhấn vào tab URLs, copy DNSName của ứng dụng ShareNote vào ô URL ( DNSName khi bạn tạo Load Balancer ở bước 4.Khởi tạo Load Balancer), và nhấn Start Test Sau một khoảng thời gian, kiểm tra phản hồi của Auto Scaling Group. Ta thấy số lượng instance được tăng lên số lượng tối đa mà chúng ta thiết lập là 3. Kiểm tra truy cập vào ứng dụng từ trình duyệt không bị gián đoạn. Chúc mừng bạn vừa hoàn thành bài thực hành Triển khai ứng dụng ShareNote với Auto Scaling Group và Elastic Load Balancer.\n"
+},
+{
+	"uri": "/vi/6-clean-up/",
+	"title": "Kiểm tra Kết quả",
+	"tags": [],
+	"description": "",
+	"content": "Trong bài thực hành này, chúng ta sẽ kiếm tra truy cập tới ShareNote và tiến hành tăng số lượng yêu cầu truy cập đến ứng dụng thông qua việc mở đồng loạt nhiều kết nối sử dụng công cụ Webserver Stress Tool 8. Bạn hãy nhấn vào link này để tải về.\nBạn cũng có thể tải về trực tiếp tại link dưới:\nWebserver Stress Tool 8\rwebstress.zip\r(6098 KB)\rKiểm tra khả năng tự mở rộng của ứng dụng ShareNote được triển khai Giải nén file zip và cài đặt Webserver Stress Tool 8 với tùy chọn mặc định. Khởi dộng Webserver Stress Tool 8 để tiến hành tạo số lượng truy cập lớn đến Endpoint của Load Balancer. Nhấn vào tab Test Type và nhập thông số như hình dưới đây: Run Unit : 100000 Number of Users : 101 Click Delay : 1 Nhấn vào tab URLs, copy DNSName của ứng dụng ShareNote vào ô URL ( DNSName khi bạn tạo Load Balancer ở bước 4.Khởi tạo Load Balancer), và nhấn Start Test Sau một khoảng thời gian, kiểm tra phản hồi của Auto Scaling Group. Ta thấy số lượng instance được tăng lên số lượng tối đa mà chúng ta thiết lập là 3. Kiểm tra truy cập vào ứng dụng từ trình duyệt không bị gián đoạn. Chúc mừng bạn vừa hoàn thành bài thực hành Triển khai ứng dụng ShareNote với Auto Scaling Group và Elastic Load Balancer.\n"
+},
+{
+	"uri": "/vi/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/vi/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]

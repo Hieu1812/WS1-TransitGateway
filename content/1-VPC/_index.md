@@ -1,0 +1,46 @@
++++
+title = "Khởi tạo VPC"
+date = 2020
+weight = 1
+chapter = false
+pre = "<b>1. </b>"
++++
+Ở phần này, bạn sẽ tạo các VPC với dải IP tương ứng trong sơ đồ
+#### Tạo VPC
+
+Để tạo VPC, chúng ta thực hiện như sau:
+1. Truy cập vào **VPC**.
+![Launch Template](/images/anh/VPC.png)
+   <!-- ảnh  -->
+1. Ở thanh điều hướng bên trái, chọn **VPC**.
+2. Ở trang khởi đầu, chọn **Create VPC**.
+<!-- ảnh -->
+![Launch Template](/images/anh/create%20VPC.png)
+
+1. Ở trang **Create VPC**, thiết lập VPC Public với các thông số như sau:
+   ![Launch Template](/images/anh/taoVPC1.png)
+   - VPC and more
+     - Nhập tên VPC
+     - Nhập dải IP theo sơ đồ
+     - Chọn số lượng AZ, ở bài này mình chọn 1
+     - Chọn số lượng public subnet 1, private subnet 0
+     - Chọn Create VPC
+  ![Launch Template](/images/anh/pubVPC.png)
+1. Ở trang **Create VPC**, thiết lập VPC Private với các thông số như sau:
+   - VPC and more
+     - Nhập tên VPC
+     - Nhập dải IP theo sơ đồ
+     - Chọn số lượng AZ, ở bài này mình chọn 1
+     - Chọn số lượng public subnet 0, private subnet 1
+     - Chọn Create VPC
+  ![launch Template](/images/anh/priec.png)
+  ![Launch Template](/images/anh/privpc.png)
+
+- Thực hiện tương tự với 2 VPC còn lại 
+
+1. Vào mục Subnet.
+   - Chọn subnet vừa tạo trong quá trình tạo VPC
+  ![Launch Template](/images/anh/subnet.png)
+   - Chọn Actions -> Edit subnet settings -> Chọn Enable auto-assign public IPv4 -> Save
+  ![Launch Template](/images/anh/subnet2.png)
+  - Thực hiện với các subnet còn lại
