@@ -2,119 +2,119 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/vi/</loc>
+    <loc>//localhost:1313/vi/</loc>
+    <lastmod>1970-01-01T07:33:44+07:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/"
+                />
+  </url><url>
+    <loc>//localhost:1313/vi/1-vpc/</loc>
+    <lastmod>1970-01-01T07:33:40+07:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/1-vpc/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/1-vpc/"
+                />
+  </url><url>
+    <loc>//localhost:1313/vi/2-ec2/</loc>
     <lastmod>1970-01-01T07:33:41+07:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/"
+                href="//localhost:1313/2-ec2/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/"
+                href="//localhost:1313/vi/2-ec2/"
                 />
   </url><url>
-    <loc>/vi/1-vpc/</loc>
+    <loc>//localhost:1313/vi/3-transit-gateway/</loc>
     <lastmod>1970-01-01T07:33:40+07:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/1-vpc/"
+                href="//localhost:1313/3-transit-gateway/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/1-vpc/"
+                href="//localhost:1313/vi/3-transit-gateway/"
                 />
   </url><url>
-    <loc>/vi/2-ec2/</loc>
-    <lastmod>1970-01-01T07:33:41+07:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/2-ec2/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="/vi/2-ec2/"
-                />
-  </url><url>
-    <loc>/vi/3-transit-gateway/</loc>
+    <loc>//localhost:1313/vi/4-transit-gateway-attachment/</loc>
     <lastmod>1970-01-01T07:33:40+07:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/3-transit-gateway/"
+                href="//localhost:1313/4-transit-gateway-attachment/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/3-transit-gateway/"
+                href="//localhost:1313/vi/4-transit-gateway-attachment/"
                 />
   </url><url>
-    <loc>/vi/4-transit-gateway-attachment/</loc>
+    <loc>//localhost:1313/vi/5-transit-gateway-route-table/</loc>
     <lastmod>1970-01-01T07:33:40+07:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/4-transit-gateway-attachment/"
+                href="//localhost:1313/5-transit-gateway-route-table/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/4-transit-gateway-attachment/"
+                href="//localhost:1313/vi/5-transit-gateway-route-table/"
                 />
   </url><url>
-    <loc>/vi/5-transit-gateway-route-table/</loc>
+    <loc>//localhost:1313/vi/6-clean-up/</loc>
     <lastmod>1970-01-01T07:33:40+07:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/5-transit-gateway-route-table/"
+                href="//localhost:1313/6-clean-up/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/5-transit-gateway-route-table/"
+                href="//localhost:1313/vi/6-clean-up/"
                 />
   </url><url>
-    <loc>/vi/6-clean-up/</loc>
-    <lastmod>1970-01-01T07:33:40+07:00</lastmod>
+    <loc>//localhost:1313/vi/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/6-clean-up/"
+                href="//localhost:1313/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/6-clean-up/"
+                href="//localhost:1313/vi/categories/"
                 />
   </url><url>
-    <loc>/vi/categories/</loc>
+    <loc>//localhost:1313/vi/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="/categories/"
+                href="//localhost:1313/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="vi"
-                href="/vi/categories/"
-                />
-  </url><url>
-    <loc>/vi/tags/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="vi"
-                href="/vi/tags/"
+                href="//localhost:1313/vi/tags/"
                 />
   </url>
 </urlset>

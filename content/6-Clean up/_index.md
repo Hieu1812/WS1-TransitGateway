@@ -1,5 +1,5 @@
 +++
-title = "Dọn dẹp tài nguyên"
+title = "Clean up"
 date = 2020
 weight = 6
 chapter = false
@@ -7,24 +7,24 @@ pre = "<b>6. </b>"
 +++
 
 Transit gateway attachments
-- Chọn Transit gateway attachments -> Actions -> Delete Transit gateway attachments -> Nhập **delete**.
+- Select Transit gateway attachments -> Actions -> Delete Transit gateway attachments -> fill **delete**.
   ![](/images/anh/clean1.png)
-  - Thực hiện tương tự với các Transit gateway attachments còn lại
+  - Do the same with other Transit gateway attachments 
   
 Transit gateway route table
-- Chọn Transit gateway route table -> Actions -> Delete Transit gateway route table -> Nhập **delete**.
+- Select Transit gateway route table -> Actions -> Delete Transit gateway route table -> fill **delete**.
   ![](/images/anh/clean2.png)
 
 Transit gateway
-- Chọn Transit gateway -> Actions -> Delete Transit gateway -> Nhập **delete**.
+- Select Transit gateway -> Actions -> Delete Transit gateway -> fill **delete**.
   ![](/images/anh/clean3.png)
 
 EC2
-- Chọn Instance -> Instance state -> Terminate instance -> Nhập **delete**.
+- Select Instance -> Instance state -> Terminate instance -> fill **delete**.
   ![](/images/anh/clean4.png)
-- Thực hiện tương tự với các Instance còn lại
+- Do the same with other Instance 
 
 VPC
-- Chọn VPC -> Actions -> Delete VPC 
+- Select VPC -> Actions -> Delete VPC 
   ![](/images/anh/clean5.png)
-- Thực hiện tương tự với các VPC còn lại
+- Do the same with other VPC 

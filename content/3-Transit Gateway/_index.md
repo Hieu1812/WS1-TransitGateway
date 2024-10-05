@@ -1,14 +1,14 @@
 +++
-title = "Khởi tạo Transit gateway"
+title = "Create Transit gateway"
 date = 2020
 weight = 3
 chapter = false
 pre = "<b>3. </b>"
 +++
 
-Ở bước này, chúng ta sẽ triển khai Transit Gateway để kết nối các VPC.
-1. Truy cập VPC, chọn Transit Gateway, Create Transit Gateway
+At this section, we implement Transit Gateway to conect though VPCs.
+1. Access VPC, Transit Gateway, Create Transit Gateway
   ![Launch Template](/images/anh/tsgw1.png)
-2. Điền name tag, bỏ tick **default route table associations**, **default route table propagation** rồi Create Transit Gateway
+2. Fill name tag, untick **default route table associations**, **default route table propagation** then Create Transit Gateway
   ![Launch Template](/images/anh/createtsgw.png)
   

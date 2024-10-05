@@ -30,5 +30,5 @@ pre = "<b>2. </b>"
 - Mình sử dụng MobaX.. nên các bước sẽ như sau
   1. Chọn SSH -> nhập Remote host (là Public IPv4 của EC2) -> Specify username "ec2-user" -> Port 22 -> Advanced SSH settings -> use private kye và chọn file key được tải về sau khi tạo keypair
    ![Launch Template](/images/anh/SSH.png)
-  2. Khi thự hiện kết nối EC2 thành công, ta nhập đoạn sau để kiểm tra **ping amazon.com -c5**. Trả về kết quả như ảnh là EC2 đã kết nối với internet thành công
+  2. Khi thự hiện kết nối EC2 thành công, ta nhập đoạn sau để kiểm tra ```ping amazon.com -c5```. Trả về kết quả như ảnh là EC2 đã kết nối với internet thành công
    ![Launch Template](/images/anh/check%20igw.png)

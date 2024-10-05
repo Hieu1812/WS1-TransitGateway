@@ -1,34 +1,34 @@
 +++
-title = "Khởi tạo EC2"
+title = "Create EC2"
 date = 2021
 weight = 2
 chapter = false
 pre = "<b>2. </b>"
 +++
 
-Ở phần này, bạn sẽ tạo EC2 cho các VPC.
-#### Tạo EC2
-Để tạo EC2 nhanh chóng ta thực hiện các bước sau
-1. Truy cập **EC2** 
+At this section, you will create EC2 for each VPCs.
+#### Create EC2
+To create EC2, follow these steps:
+1. Access **EC2** 
 ![Launch Template](/images/anh/ec2.png)
-2. Chọn Instance -> Create Instance
+2. Instance -> Create Instance
 ![Launch Template](/images/anh/create%20EC2.png)
-- Chọn AIM, ở đây mình chọn Amazon Linux 2AMI
+- AMI, in this workshop i choose Amazon Linux 2AMI
   ![Launch Template](/images/anh/ec2.png)
-- Chọn t2.micro
-- Chọn key pair, nếu chưa có key pair chọn create key pair là chọn theo hình dưới
+- t2.micro
+- Select key pair, if you don't have a key pair, select create key pair as shown below
   ![Launch Template](/images/anh/awskey.png)
-- Ở mục Network settings chọn edit
+- At Network settings choose edit
   ![Launch Template](/images/anh/edit.png)
 - Chọn VPC, Subnet tương ứng với EC2 muốn cài. Chọn Create security groups, Nhập tên SG, mô tả, tạo thêm 1 SG rules và cấu hình như sau với EC2 đặt ở public:
   ![Launch Template](/images/anh/taoec2.png)
-- Launch Instance để tạo EC2
-- Với EC2 đặt ở private ta cấu hình Sg như sau
+- Launch Instance to create EC2
+- with EC2 in private we config SG as shown below
   ![Launch Template](/images/anh/priec22.png)
- - Thục hiện tương tự với 2 EC2 private còn lại.
-#### Kiểm tra kết nôi của public
-- Mình sử dụng MobaX.. nên các bước sẽ như sau
-  1. Chọn SSH -> nhập Remote host (là Public IPv4 của EC2) -> Specify username "ec2-user" -> Port 22 -> Advanced SSH settings -> use private kye và chọn file key được tải về sau khi tạo keypair
+ - Do the same with other subnets
+#### Test the connection of EC2 public
+- I use MobaXterm so the steps will be as follows
+  1. SSH -> type Remote host (Public IPv4 of EC2) -> Specify username "ec2-user" -> Port 22 -> Advanced SSH settings -> use private key and select file key which is downloaded after create key pair
    ![Launch Template](/images/anh/SSH.png)
-  2. Khi thự hiện kết nối EC2 thành công, ta nhập đoạn sau để kiểm tra **ping amazon.com -c5**. Trả về kết quả như ảnh là EC2 đã kết nối với internet thành công
+  2. When the EC2 connection is successful, enter the following to check ```ping amazon.com -c5.``` The result as shown in the picture means that EC2 has successfully connected to the internet.
    ![Launch Template](/images/anh/check%20igw.png)

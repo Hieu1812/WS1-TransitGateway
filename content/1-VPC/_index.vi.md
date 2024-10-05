@@ -12,12 +12,12 @@ pre = "<b>1. </b>"
 1. Truy cập vào **VPC**.
 ![Launch Template](/images/anh/VPC.png)
    <!-- ảnh  -->
-1. Ở thanh điều hướng bên trái, chọn **VPC**.
-2. Ở trang khởi đầu, chọn **Create VPC**.
+2. Ở thanh điều hướng bên trái, chọn **VPC**.
+3. Ở trang khởi đầu, chọn **Create VPC**.
 <!-- ảnh -->
 ![Launch Template](/images/anh/create%20VPC.png)
 
-1. Ở trang **Create VPC**, thiết lập VPC Public với các thông số như sau:
+4. Ở trang **Create VPC**, thiết lập VPC Public với các thông số như sau:
    ![Launch Template](/images/anh/taoVPC1.png)
    - VPC and more
      - Nhập tên VPC
@@ -26,7 +26,7 @@ pre = "<b>1. </b>"
      - Chọn số lượng public subnet 1, private subnet 0
      - Chọn Create VPC
   ![Launch Template](/images/anh/pubVPC.png)
-1. Ở trang **Create VPC**, thiết lập VPC Private với các thông số như sau:
+5. Ở trang **Create VPC**, thiết lập VPC Private với các thông số như sau:
    - VPC and more
      - Nhập tên VPC
      - Nhập dải IP theo sơ đồ
@@ -38,7 +38,7 @@ pre = "<b>1. </b>"
 
 - Thực hiện tương tự với 2 VPC còn lại 
 
-1. Vào mục Subnet.
+6. Vào mục Subnet.
    - Chọn subnet vừa tạo trong quá trình tạo VPC
   ![Launch Template](/images/anh/subnet.png)
    - Chọn Actions -> Edit subnet settings -> Chọn Enable auto-assign public IPv4 -> Save

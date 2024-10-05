@@ -1,14 +1,15 @@
 +++
-title = "Khởi tạo Transit Gateway Attachment"
+title = "Create Transit Gateway Attachment"
 date = 2020
 weight = 4
 chapter = false
 pre = "<b>4. </b>"
 +++
 
-Ở bước này, Chúng ta sẽ tạo Transit Gateway Attachment cho các VPC.
-1. Truy cập VPC, chọn Transit Gateway, Create Transit Gateway
+At this section, we create Transit Gateway Attachment for each VPCs.
+1. Access VPC, Transit Gateway, Create Transit Gateway
   ![Launch Template](/images/anh/tgwa.png)
-2. Điền name tag, lựa Transit gateưay vừa tạo, Attachment type **VPC**. Ở mục VPC Attachment chọn VPC cần gắn, các subnet của vpc hiện ra và vì mình chỉ tạo 1 subnet cho mỗi VPC nên không cần lựa chọn subnet. Sau đó chọn Create Transit Gateway Attachment để tạo.
-  ![launch Template](/images/anh/tsgw1.png)
-3. Thực hiện các bước tương tự với 3 VPC còn lại.
+2. Fill name tag, choose Transit gateway just created, Attachment type **VPC**.
+   At VPC Attachment choose VPC need to attachment, all the subnet of vpc will show up and i just create 1 subnet for each VPC so we don't need to specify subnet for it. Select Create Transit Gateway Attachment.
+  ![launch Template](/images/anh/tsgwa1.png)
+1. Do the same with other VPCs.

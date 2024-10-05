@@ -54,3 +54,4 @@ Kiểm tra kết nối giữa các VPC
   ![](/images/anh/pingtopri3.png)
 
 Như vậy, các VPC đã được kết nối với nhau thông qua Transit gateway. 
+Để theo dõi transit gateways, bạn có thể tham khảo bài viết này. [CloudWatch metrics](https://docs.aws.amazon.com/vpc/latest/tgw/transit-gateway-cloudwatch-metrics.html)

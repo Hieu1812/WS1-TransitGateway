@@ -13,8 +13,11 @@ chapter = false
 Thêm vào đó, chúng ta cũng sẽ triển khai **EC2 Instance** với mỗi VPC để kiểm tra tính kết nối giữa các VPC.
 ![launch Template](/images/graph.png)
 <!-- them hinh graph -->
+
+#### Lựa chọn giữa VPC peering và Transit Gateway
+- Về bản chất, VPC peering và Transit Gateway đều giúp người dùng kết nối các VPC với nhau trong mạng lưới nội bộ. Nhưng tùy vào quy mô của hệ thống mà chúng ta chọn. Với hệ thống chỉ có từ 3 VPC trở xuống ta có thể sử dụng VPC peering với 3 peering connection. Khi hệ thống phức tạp, nhiều VPC thì ta sẽ phải khởi tạo nhiều peering connection tạo sự bất tiện, khó kiểm soát và khả năng mở rộng thấp. Cũng vì đó mà xuất hiện Transit Gateway. 
 #### Transit Gateway
-- 
+-  Được sinh ra để giải quyết những nhược điểm của Peering Conenction, Transite Gateway được dùng để kết nối các VPC và mạng on-premises thông qua một hub trung tâm. Điều này đơn giản hoá mạng và kết thúc các mối quan hệ định tuyến phức tạp.
 #### VPC
 - Amazon Virtual Private Cloud (Amazon VPC) là dịch vụ cho phép bạn khởi chạy các tài nguyên AWS trong mạng ảo cô lập theo logic mà bạn xác định. Bạn có toàn quyền kiểm soát môi trường mạng ảo của mình, bao gồm lựa chọn dải địa chỉ IP, tạo các mạng con, cấu hình các bảng định tuyến và cổng kết nối mạng.
 #### EC2 Instance
