@@ -20,7 +20,7 @@ To create EC2, follow these steps:
   ![Launch Template](/images/anh/awskey.png)
 - At Network settings choose edit
   ![Launch Template](/images/anh/edit.png)
-- Chọn VPC, Subnet tương ứng với EC2 muốn cài. Chọn Create security groups, Nhập tên SG, mô tả, tạo thêm 1 SG rules và cấu hình như sau với EC2 đặt ở public:
+- Chosse VPC, Subnet as the EC2 you want to config. Create security groups, type SG name, description, add 1 SG rules and config public EC2 as below :
   ![Launch Template](/images/anh/taoec2.png)
 - Launch Instance to create EC2
 - with EC2 in private we config SG as shown below
